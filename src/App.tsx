@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { AppContainer } from './styles';
+import { FC } from 'react';
+import { AddNewItem } from './components/AddNewItem';
+import { Column } from './components/Column';
+import { Card } from './components/Card';
 
-function App() {
+export const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <AppContainer>
+      <Column text="To do">
+        <Card text='Generate app structure'/>
+      </Column>
+      <Column text="In progress">
+        <Card text='Learn Typescript'/>
+      </Column>
+      <Column text="Done">
+        <Card text='Begin to use static typing'/>
+      </Column>
 
-export default App;
+      <AddNewItem
+        toggleButtonText="+ Add another list"
+        handleAdd={console.log}
+      />
+    </AppContainer>
+  );
+};
