@@ -3,9 +3,10 @@ import { FC } from 'react';
 import { AddNewItem } from './components/AddNewItem';
 import { Column } from './components/Column';
 import { useAppState } from './state/AppStateContext';
+import { addList } from './state/actions';
 
 export const App: FC = () => {
-  const { lists } = useAppState();
+  const { lists, dispatch } = useAppState();
 
   return (
     <AppContainer>
@@ -15,7 +16,7 @@ export const App: FC = () => {
 
       <AddNewItem
         toggleButtonText="+ Add another list"
-        handleAdd={console.log}
+        handleAdd={text => dispatch(addList(text))}
       />
     </AppContainer>
   );
