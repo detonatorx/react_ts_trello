@@ -40,7 +40,7 @@ export const CardContainer = styled.div`
 `;
 
 export const AddItemButton = styled.button<AddItemButtonProps>`
-  background-color: #ffffff3d;
+  background-color: #c1e7b9;
   border-radius: 3px;
   border: none;
   color: ${props => (props.dark ? '#000' : '#fff')}
