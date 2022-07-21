@@ -2,7 +2,7 @@ import { createContext, useContext, FC, Dispatch } from 'react';
 import { Action } from './actions';
 import { appStateReducer, AppState, List, Task } from './appStateReducer';
 import { useImmerReducer } from 'use-immer';
-import { DragItem } from '../DragItem';
+import { DragItem } from '../dnd/DragItem';
 
 type AppStateContextProps = {
   draggedItem: DragItem | null;

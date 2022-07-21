@@ -1,9 +1,9 @@
 import { useDrag } from 'react-dnd';
-import { DragItem } from '../DragItem';
-import { setDraggedItem } from '../state/actions';
 import { useAppState } from '../state/AppStateContext';
+import { DragItem } from '../dnd/DragItem';
 import { useEffect } from 'react';
 import { getEmptyImage } from 'react-dnd-html5-backend';
+import { setDraggedItem } from '../state/actions';
 
 export const useItemDrag = (item: DragItem) => {
   const { dispatch } = useAppState();
@@ -15,10 +15,9 @@ export const useItemDrag = (item: DragItem) => {
     },
     end: () => dispatch(setDraggedItem(null)),
   });
-
+  
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });
   }, [preview]);
-
   return { drag };
 };
