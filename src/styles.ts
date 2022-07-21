@@ -4,8 +4,16 @@ type AddItemButtonProps = {
   dark?: boolean;
 };
 
+type DragPreviewWrapperProps = {
+  position: {
+    x: number;
+    y: number;
+  };
+};
+
 interface DragPreviewContainerProps {
   isHidden?: boolean;
+  isPreview?: boolean;
 }
 
 export const AppContainer = styled.div`
@@ -19,8 +27,17 @@ export const AppContainer = styled.div`
 `;
 
 export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
-  opacity: ${props => (props.isHidden ? 0.3 : 1)};
+  transform: ${props => (props.isPreview ? 'rotate(5deg)' : undefined)};
+  opacity: ${props => (props.isHidden ? 0 : 1)};
 `;
+
+export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
+  ({ position: { x, y } }) => ({
+    style: {
+      transform: `translate(${x}px, ${y}px)`,
+    },
+  })
+)<DragPreviewWrapperProps>``;
 
 export const ColumnContainer = styled(DragPreviewContainer)`
   background-color: #ebecf0;
@@ -88,4 +105,14 @@ export const NewItemInput = styled.input`
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   width: 100%;
+`;
+
+export const CustomDragLayerContainer = styled.div`
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 `;
