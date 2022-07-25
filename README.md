@@ -1,4 +1,4 @@
-# React-APP Dashboard
+# React-APP Kanban
 
 ## Доска задач
 
